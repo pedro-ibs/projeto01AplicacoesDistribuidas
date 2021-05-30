@@ -14,6 +14,7 @@ public class BookVO implements Serializable {
 	private Integer pages;
 	private String image;
 	private String description;
+	
 	public Long getId() {
 		return id;
 	}
