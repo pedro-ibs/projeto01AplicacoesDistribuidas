@@ -20,13 +20,8 @@ adicione outra **não esqueça de comentar as configurações dos outros**.
 
 
 ## **Iniciando o Sistema Corretamente**
- * Configure o acesso do banco de dados em [application.properties](https://github.com/pedro-ibs/projeto01AplicacoesDistribuidas/blob/main/apiAcervo/src/main/resources/application.properties)
- * Inicie a api pelo Eclipse
- * Configure o o parâmetros [$config['base_url'] em web/application/config/config.php](https://github.com/pedro-ibs/projeto01AplicacoesDistribuidas/blob/main/web/application/config/config.php) de acordo com o seu ambiente 
- * Inicie a parte web pelo xampp (caso use outro inicie a web por lá)
 
  * Caso esteja usando linux com o lamp siga os seguintes passos:
-
 ```
 cd /opt/lampp/
 sudo chown seuUser htdocs/*
@@ -36,6 +31,10 @@ sudo /CaminhdoDoRepo/AulasAplicacoesDistribuidas/runLappLinux.sh
 ```
 
 
+ * Inicie a parte web pelo xampp (caso use outro inicie a web por lá). É preciso ter a Base de dados  do banco chamada **rest_spring_boot_ifsp**, ao executar a api ela criará as tabelas suas restrições. Caso alguma configuração do SQL seja alterado em uma das tabelas na api é preciso apagar a tabela em questão ou alterar diretamente no banco de dados.
 
 
-É preciso ter a Base de dados  do banco chamada **rest_spring_boot_ifsp**, ao executar a api ela criará as tabelas suas restrições. Caso alguma configuração do SQL seja alterado em uma das tabelas na api é preciso apagar a tabela em questão ou alterar diretamente no banco de dados.
+ * Configure o acesso do banco de dados em [application.properties](https://github.com/pedro-ibs/projeto01AplicacoesDistribuidas/blob/main/apiAcervo/src/main/resources/application.properties)
+ * Inicie a api pelo Eclipse
+ * Configure o o parâmetros [$config['base_url'] em web/application/config/config.php](https://github.com/pedro-ibs/projeto01AplicacoesDistribuidas/blob/main/web/application/config/config.php) de acordo com o seu ambiente 
+
