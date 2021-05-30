@@ -6,6 +6,7 @@ class Acervo_model extends CI_Model{
     function __construct() 
     {
         parent::__construct();
+        date_default_timezone_set('America/Sao_Paulo');
         $this->dados = $this->session->userdata("dados" . APPNAME);
     }
 
@@ -23,6 +24,8 @@ class Acervo_model extends CI_Model{
             return false;
         }
     }
+
+    //Inicio Categoria
 
     public function get_categorias()
     {
@@ -120,11 +123,14 @@ class Acervo_model extends CI_Model{
         return $rst;
     }
 
+    //Fim Categoria
+
+    //Inicio Livros
+
     public function get_livros($nome)
     {
         $url       = 'http://localhost:8080/Book/';
         $cabecalho = array('Content-Type: application/json', 'Accept: application/json');
-        // $campos    = json_encode(array('status' => 'paused'));
 
         $ch = curl_init();
 
@@ -144,28 +150,15 @@ class Acervo_model extends CI_Model{
 
         foreach($json as $item)
         {
-            // echo '<pre>';
-            // print_r($item);
-            // echo '</pre>';
             $json2 = $this->get_categoria($item->idCategory);
             
             
             $item->category = $json2;
             
             if($nome != null)
-            {
-                // echo '<pre>';
-                // print_r($nome);
-                // echo '</pre>';
-                // echo '<pre>';
-                // print_r($json2->category);
-                // echo '</pre>';
-                
+            {               
                 if(strcmp($nome, $json2->category) == 0)
                 {
-                    // echo '<pre>';
-                    // print_r($item);
-                    // echo '</pre>';
                     $result[] = $item;
                 }
                     
@@ -173,59 +166,8 @@ class Acervo_model extends CI_Model{
             else
                 $result[] = $item;
         }
-        // echo '<pre>';
-        // print_r($result);
-        // echo '</pre>';
-        // exit;
+
         return $result;
-    }
-
-    public function cadastro_livro()
-    {
-        $rst = (object)array("rst" => true, "msg" => "");
-        $data = (object)$this->input->post();        
-
-        move_uploaded_file($_FILES["imagem"]["tmp_name"], APPPATH."..\assets\uploads"."\\".$_FILES["imagem"]["name"]);
-
-        $path = $_FILES["imagem"]["name"];
-
-        $url       = 'http://localhost:8080/Book/';
-        $cabecalho = array('Content-Type: application/json', 'Accept: application/json');
-        $campos    = json_encode(
-            array(
-                "title" => $data->titulo,
-                "author" => $data->autor,
-                "year" => $data->ano,
-                "idCategory" => $data->categoria,
-                "pages" => $data->pagina,
-                "description" => $data->descricao,
-                "image" => $path,
-            )
-        );
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL,            $url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER,     $cabecalho);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     $campos);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST,           true);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  'POST');
-
-        $json = json_decode(curl_exec($ch));
-
-        if($json == false)
-        {
-            $rst->rst = false;
-            $rst->msg = "Não foi possivel salvar o livro";
-        }
-        else
-        {
-            $rst->msg = "Livro salva com sucesso";
-        }
-
-        return $rst;
     }
 
     public function get_livro($id)
@@ -251,6 +193,59 @@ class Acervo_model extends CI_Model{
         $json->category = $this->get_categoria($json->idCategory);
         
         return $json;
+    }
+
+    public function cadastro_livro()
+    {
+        $rst = (object)array("rst" => true, "msg" => "");
+        $data = (object)$this->input->post();        
+
+        move_uploaded_file($_FILES["imagem"]["tmp_name"], APPPATH."..\assets\uploads"."\\".$_FILES["imagem"]["name"]);
+
+        $path = $_FILES["imagem"]["name"];
+
+        $url       = 'http://localhost:8080/Book/';
+        $cabecalho = array('Content-Type: application/json', 'Accept: application/json');
+        $campos    = json_encode(
+            array(
+                "title" => $data->titulo,
+                "author" => $data->autor,
+                "year" => $data->ano,
+                "idCategory" => $data->categoria,
+                "pages" => $data->pagina,
+                "description" => $data->descricao,
+                "image" => $path,
+                "date" => "".date('d/m/Y H:i:s')
+            )
+        );
+
+        
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,            $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,     $cabecalho);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     $campos);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST,           true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  'POST');
+
+        $json = json_decode(curl_exec($ch));
+
+        
+
+        if($json == false)
+        {
+            $rst->rst = false;
+            $rst->msg = "Não foi possivel salvar o livro";
+        }
+        else
+        {
+            $rst->msg = "Livro salva com sucesso";
+        }
+
+        return $rst;
     }
 
     public function editaLivro()
@@ -282,6 +277,7 @@ class Acervo_model extends CI_Model{
                 "pages" => $data->pagina,
                 "description" => $data->descricao,
                 "image" => $path,
+                "date" => "".date('d/m/Y H:i:s')
             )
         );
 
@@ -344,4 +340,6 @@ class Acervo_model extends CI_Model{
         
         return $rst;
     }
+
+    //Fim Livros
 }

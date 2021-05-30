@@ -25,9 +25,9 @@
         </div>
         <div class="col-md-9 col-sm-12 col-xs-12 pt-5 pb-5">
             <h2>Lista de Livros</h2>
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-12 row-cols-lg-2 row-cols-xl-2 g-4">
             <?php foreach($livros as $item): ?>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col">
                     <div class="card" style="width: 18rem;">
                         <img src="<?= base_url("assets/uploads/$item->image") ?>" class="card-img-top" alt="...">
                         <div class="card-body">
