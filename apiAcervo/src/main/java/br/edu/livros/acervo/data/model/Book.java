@@ -38,6 +38,9 @@ public class Book implements Serializable {
 	
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
+	
+	@Column(name = "date", nullable = false, length = 50)
+	private String date;
 
 	public Long getId() {
 		return id;
@@ -102,6 +105,14 @@ public class Book implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	@Override
 	public int hashCode() {
@@ -115,6 +126,7 @@ public class Book implements Serializable {
 		result = prime * result + ((pages == null) ? 0 : pages.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((year == null) ? 0 : year.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		return result;
 	}
 
@@ -166,6 +178,11 @@ public class Book implements Serializable {
 			if (other.year != null)
 				return false;
 		} else if (!year.equals(other.year))
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
 			return false;
 		return true;
 	}

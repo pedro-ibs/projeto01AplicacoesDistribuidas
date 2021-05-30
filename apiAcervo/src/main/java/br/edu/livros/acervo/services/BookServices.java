@@ -42,6 +42,7 @@ public class BookServices {
 		entity.setPages(book.getPages());	
 		entity.setImage(book.getImage());
 		entity.setDescription(book.getDescription());
+		entity.setDate(book.getDate());
 		
 		var vo = DozerConverter.parseObject(repository.save(entity), BookVO.class);
 		return vo;
