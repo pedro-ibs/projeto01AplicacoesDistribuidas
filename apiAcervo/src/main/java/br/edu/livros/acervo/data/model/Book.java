@@ -24,25 +24,19 @@ public class Book implements Serializable {
 	@Column(name = "author", nullable = false, length = 80)
 	private String author;
 	
-	@Column(name = "publishing_company ", nullable = false, length = 80)
-	private String publishingCompany ;
-	
 	@Column(name = "year", nullable = false, length = 80)
 	private String year;
 
 	@Column(name = "id_category", nullable = false)
 	private Long idCategory;
 	
-	@Column(name = "number", nullable = false, length = 80, unique = true)
-	private String number;
-	
 	@Column(name = "pages", nullable = false)
 	private Integer pages;
 
-	@Column(name = "image", nullable = false, length = 100)
+	@Column(name = "image", nullable = false, length = 5000)
 	private String image;
 	
-	@Column(name = "description", nullable = false, length = 300)
+	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
 
 	public Long getId() {
@@ -69,14 +63,6 @@ public class Book implements Serializable {
 		this.author = author;
 	}
 
-	public String getPublishingCompany() {
-		return publishingCompany;
-	}
-
-	public void setPublishingCompany(String publishingCompany) {
-		this.publishingCompany = publishingCompany;
-	}
-
 	public String getYear() {
 		return year;
 	}
@@ -91,14 +77,6 @@ public class Book implements Serializable {
 
 	public void setIdCategory(Long idCategory) {
 		this.idCategory = idCategory;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
 	}
 
 	public Integer getPages() {
@@ -134,9 +112,7 @@ public class Book implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((idCategory == null) ? 0 : idCategory.hashCode());
 		result = prime * result + ((image == null) ? 0 : image.hashCode());
-		result = prime * result + ((number == null) ? 0 : number.hashCode());
 		result = prime * result + ((pages == null) ? 0 : pages.hashCode());
-		result = prime * result + ((publishingCompany == null) ? 0 : publishingCompany.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((year == null) ? 0 : year.hashCode());
 		return result;
@@ -176,20 +152,10 @@ public class Book implements Serializable {
 				return false;
 		} else if (!image.equals(other.image))
 			return false;
-		if (number == null) {
-			if (other.number != null)
-				return false;
-		} else if (!number.equals(other.number))
-			return false;
 		if (pages == null) {
 			if (other.pages != null)
 				return false;
 		} else if (!pages.equals(other.pages))
-			return false;
-		if (publishingCompany == null) {
-			if (other.publishingCompany != null)
-				return false;
-		} else if (!publishingCompany.equals(other.publishingCompany))
 			return false;
 		if (title == null) {
 			if (other.title != null)

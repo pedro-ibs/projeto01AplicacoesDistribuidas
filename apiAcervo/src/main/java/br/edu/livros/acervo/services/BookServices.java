@@ -37,10 +37,8 @@ public class BookServices {
 
 		entity.setTitle(book.getTitle());
 		entity.setAuthor(book.getAuthor());
-		entity.setPublishingCompany(book.getPublishingCompany());
 		entity.setYear(book.getYear());
 		entity.setIdCategory(book.getIdCategory());
-		entity.setNumber(book.getNumber());
 		entity.setPages(book.getPages());	
 		entity.setImage(book.getImage());
 		entity.setDescription(book.getDescription());

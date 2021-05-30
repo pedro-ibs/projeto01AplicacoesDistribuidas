@@ -13,33 +13,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.livros.acervo.data.vo.BookVO;
-import br.edu.livros.acervo.services.BookServices;
+import br.edu.livros.acervo.data.vo.CategoryVO;
+import br.edu.livros.acervo.services.CategoryServices;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/Category")
 public class CategoryController {	
 	
 	@Autowired
-	private BookServices services;
+	private CategoryServices services;
 	
 	@GetMapping
-	public List<BookVO> findAll() {
+	public List<CategoryVO> findAll() {
 		return services.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public BookVO findById(@PathVariable("id") Long id) {
+	public CategoryVO findById(@PathVariable("id") Long id) {
 		return services.findById(id);
 	}
 	
 	@PostMapping
-	public BookVO create(@RequestBody BookVO person) {
+	public CategoryVO create(@RequestBody CategoryVO person) {
 		return services.create(person);
 	}
 	
 	@PutMapping
-	public BookVO update(@RequestBody BookVO person) {
+	public CategoryVO update(@RequestBody CategoryVO person) {
 		return services.update(person);
 	}
 	
