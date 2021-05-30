@@ -9,6 +9,7 @@ class Acervo_model extends CI_Model{
         $this->dados = $this->session->userdata("dados" . APPNAME);
     }
 
+    // apenas para testes
     public function autentificar()
     {
         $data = (object)$this->input->post();
