@@ -38,3 +38,6 @@ sudo /CaminhdoDoRepo/AulasAplicacoesDistribuidas/runLappLinux.sh
 
  * Inicie a api pelo Eclipse
 
+# Banco de dados
+ * apague a tabela book e category.
+ * importe dados usando o  arquivo [livros.sql](https://github.com/pedro-ibs/projeto01AplicacoesDistribuidas/blob/main/livros.sql)
