@@ -14,16 +14,14 @@ class Acervo_model extends CI_Model{
     {
         $data = (object)$this->input->post();
 
-        // if($data->login == "Admin" && $data->senha == "12345678")
-        // {
-        //     return true;
-        // }
-        // else
-        // {
-        //     return false;
-        // }
-
-        return true;
+        if($data->login == "Admin" && $data->senha == "12345678")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function get_categorias()
