@@ -9,10 +9,8 @@ public class BookVO implements Serializable {
 	private Long id;
 	private String title;
 	private String author;
-	private String publishingCompany ;
 	private String year;
 	private Long idCategory;
-	private String number;
 	private Integer pages;
 	private String image;
 	private String description;
@@ -34,12 +32,6 @@ public class BookVO implements Serializable {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getPublishingCompany() {
-		return publishingCompany;
-	}
-	public void setPublishingCompany(String publishingCompany) {
-		this.publishingCompany = publishingCompany;
-	}
 	public String getYear() {
 		return year;
 	}
@@ -51,12 +43,6 @@ public class BookVO implements Serializable {
 	}
 	public void setIdCategory(Long idCategory) {
 		this.idCategory = idCategory;
-	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
 	}
 	public Integer getPages() {
 		return pages;
@@ -85,9 +71,7 @@ public class BookVO implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((idCategory == null) ? 0 : idCategory.hashCode());
 		result = prime * result + ((image == null) ? 0 : image.hashCode());
-		result = prime * result + ((number == null) ? 0 : number.hashCode());
 		result = prime * result + ((pages == null) ? 0 : pages.hashCode());
-		result = prime * result + ((publishingCompany == null) ? 0 : publishingCompany.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((year == null) ? 0 : year.hashCode());
 		return result;
@@ -126,20 +110,10 @@ public class BookVO implements Serializable {
 				return false;
 		} else if (!image.equals(other.image))
 			return false;
-		if (number == null) {
-			if (other.number != null)
-				return false;
-		} else if (!number.equals(other.number))
-			return false;
 		if (pages == null) {
 			if (other.pages != null)
 				return false;
 		} else if (!pages.equals(other.pages))
-			return false;
-		if (publishingCompany == null) {
-			if (other.publishingCompany != null)
-				return false;
-		} else if (!publishingCompany.equals(other.publishingCompany))
 			return false;
 		if (title == null) {
 			if (other.title != null)
