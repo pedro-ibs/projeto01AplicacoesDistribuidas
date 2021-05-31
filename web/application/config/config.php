@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //Sempre que o nome do projeto ou o caminho sofrer alteração, deve se alterar aqui.
+<<<<<<< HEAD
 
 /**
  * pedro_ibs (usando link simbólico do linux)
@@ -35,6 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * caso clone o projeto inteiro no htdocs do xampp 
  * 
  */
+=======
+>>>>>>> 3728262e11d5a3f459aa80e7abd27348ffecf8a0
 $config['base_url'] = 'http://localhost/projeto01AplicacoesDistribuidas/web/';
 
 /*
