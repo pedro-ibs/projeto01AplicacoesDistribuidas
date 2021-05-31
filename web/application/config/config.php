@@ -23,21 +23,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-//Sempre que o nome do projeto ou o caminho sofrer alteração, deve se alterar aqui.
-<<<<<<< HEAD
 
-/**
+
+// * Sempre que o nome do projeto ou o caminho sofrer alteração, deve se alterar $config['base_url']. */
+
+/** 
  * pedro_ibs (usando link simbólico do linux)
  */
 // $config['base_url'] = 'http://localhost/Acervo/';
 
-
 /**
- * caso clone o projeto inteiro no htdocs do xampp 
- * 
+ * caso clone o projeto inteiro no htdocs do xampp  
  */
-=======
->>>>>>> 3728262e11d5a3f459aa80e7abd27348ffecf8a0
 $config['base_url'] = 'http://localhost/projeto01AplicacoesDistribuidas/web/';
 
 /*
